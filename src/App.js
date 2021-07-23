@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import Books from './Books';
+import './App.css'
+import Books from './Books.js';
+import Users from './Users.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -12,7 +14,7 @@ function App() {
   const consultarAPI = async () => {
     const api = await fetch('https://fakerapi.it/api/v1/books?_quantity=5');
     const books = await api.json();
-    obtenerBooks(books[0]); 
+    obtenerBooks(books.data); 
     console.log(api)
     console.log(books)
     
@@ -20,18 +22,19 @@ function App() {
     
  
     
-    return (
-      <>
+  console.log(books);
+  return (
+    <>
         <Router>
 
           <Switch>
 
-            <Route path="/">
-              <h1>Books</h1>    
+            <Route path="/users">
+              <h1>USERS</h1>    
             </Route>
 
-            <Route path="/users">
-              <h2>Users</h2>
+            <Route path="/">
+              <h1>BOOKS</h1>
             </Route>
 
           </Switch>
@@ -40,10 +43,10 @@ function App() {
 
       <div >
 
-        <Books
-          books ={books}
+        <Books 
+        books={books}
         />
-        <button onClick={ consultarAPI }
+        <button className="button" onClick={ consultarAPI }
           > Buscar 
         </button>
 

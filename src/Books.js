@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const Books=({books})=>{
     return(
-        <div>
-        {books=[]}
-        </div>
-
+        <div></div>
+            
     );
+}
+Books.propTypes={
+    book:PropTypes.array.isRequired
 }
 
 export default Books;
