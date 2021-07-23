@@ -1,37 +1,54 @@
 import React, {useState} from 'react';
-import styled from '@emotion/styled';
 import Books from './Books';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
+  
 
 function App() {
 
   const [books,obtenerBooks]=useState({});
 
   const consultarAPI = async () => {
-    const api = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
+    const api = await fetch('https://fakerapi.it/api/v1/books?_quantity=5');
     const books = await api.json();
-    obtenerBooks(books); 
+    obtenerBooks(books[0]); 
+    console.log(api)
+    console.log(books)
+    
   }
     
-  const Contenedor = styled.div`
-  display: flex;
-  align-items: center;
-  padding-top:5rem;
-  flex-direction:column;
-`;
+ 
     
     return (
-      <Contenedor >
+      <>
+        <Router>
+
+          <Switch>
+
+            <Route path="/">
+              <h1>Books</h1>    
+            </Route>
+
+            <Route path="/users">
+              <h2>Users</h2>
+            </Route>
+
+          </Switch>
+
+        </Router>
+
+      <div >
+
         <Books
           books ={books}
         />
-        <button 
-          onClick={ consultarAPI }
-        >
-          Obtener Resultados
+        <button onClick={ consultarAPI }
+          > Buscar 
         </button>
-      </Contenedor>
+
+      </div>
+      </>
     );
 }
 

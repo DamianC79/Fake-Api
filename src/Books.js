@@ -3,7 +3,7 @@ import React from 'react';
 const Books=({books})=>{
     return(
         <div>
-        <h1>{books.title}</h1>
+        {books=[]}
         </div>
 
     );
