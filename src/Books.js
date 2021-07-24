@@ -1,31 +1,23 @@
 import React,{useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+import { getBooks } from './api';
 
 const Books=()=>{
 
     const [books,obtenerBooks]=useState([]);
 
-    const consultarAPI = async () => {
-      const api = await fetch('https://fakerapi.it/api/v1/books?_quantity=5');
-      const books = await api.json();
-      obtenerBooks(books.data);
-
-      console.log(books.data)
-
-    }
-
     useEffect(() => {
-        consultarAPI()
-        
+        getBooks
+        .then(data => obtenerBooks(data))     
     }, [])
 
     return(
-
+        
+        <>
+        <h1>Books</h1>
         <table>
             <tbody>
                 {
                     books.map(book => (
-                        <>
                         <tr key={book.isbn}>
                             <td>{book.author}</td>
                             <td>{book.genre}</td>
@@ -34,17 +26,14 @@ const Books=()=>{
                             <td>{book.title}</td>
                             <td><img src={book.image} width="50px" height="50px"/></td>
                         </tr>
-                        </>
                     ))
                 }
             </tbody>
         </table>
+        </>
 
     );
 }
 
-Books.propTypes = {
-    books: PropTypes.array.isRequired
-}
 
 export default Books;
