@@ -1,16 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Books from './Books.js';
 import Users from './Users.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-
-
-
 function App() {
-
-  
-
-
 
     return (
       <>
@@ -19,17 +12,11 @@ function App() {
           <Switch>
 
             <Route exact path="/" component={Books}/>
-
             <Route exact path="/users" component={Users}/>
 
           </Switch>
 
         </Router>
-
-      <div >
-
-
-      </div>
       </>
     );
 }
