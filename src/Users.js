@@ -16,6 +16,17 @@ const Users = () => {
             <>
             <h1>Users</h1>
             <table>
+                <thead>
+                <tr>
+                    <td>FirstName</td>
+                    <td>LastName</td>
+                    <td>User Nick</td>
+                    <td>Gmail</td>
+                    <td>Password</td>
+                    <td>Image</td>
+                </tr> 
+
+            </thead>
                 <tbody>
                     {
                         users.map(user => (
