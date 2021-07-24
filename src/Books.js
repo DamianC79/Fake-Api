@@ -15,6 +15,17 @@ const Books=()=>{
         <>
         <h1>Books</h1>
         <table>
+            <thead>
+            <tr>
+                <td>Author</td>
+                <td>Genre</td>
+                <td>Published</td>
+                <td>Publisher</td>
+                <td>Title</td>
+                <td>Image</td>
+            </tr> 
+
+            </thead>
             <tbody>
                 {
                     books.map(book => (
